@@ -7,7 +7,6 @@ import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
 import styled from "styled-components";
 import MainHeader from "@/app/component/mainHeader";
-import PostButton from "@/app/component/postButton";
 
 const postBlog = async (
   title: string | undefined,
@@ -24,7 +23,7 @@ const postBlog = async (
   return res.json();
 };
 
-const PostBlog: React.FC = () => {
+const AddBlogpage = () => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
@@ -44,22 +43,29 @@ const PostBlog: React.FC = () => {
   };
 
   return (
-    <BlogAddContainer >
-      <Toaster />
-      <MainHeader>
-        <BlogSubmitButton type="submit" onClick={handleClick}>投稿</BlogSubmitButton>
-      </MainHeader>
-      <BlogFormContainer>
-        <form>
-          <TitleInput
-            ref={titleRef}
-            placeholder="タイトルを入力"
-            type="text"
-          />
-          <DescriptionInput ref={descriptionRef} placeholder="記事詳細を入力" />
-        </form>
-      </BlogFormContainer>
-    </BlogAddContainer>
+    <>
+      <BlogAddContainer>
+        <Toaster />
+        <MainHeader>
+          <BlogSubmitButton type="submit" onClick={handleClick}>
+            投稿
+          </BlogSubmitButton>
+        </MainHeader>
+        <BlogFormContainer>
+          <form>
+            <TitleInput
+              ref={titleRef}
+              placeholder="タイトルを入力"
+              type="text"
+            />
+            <DescriptionInput
+              ref={descriptionRef}
+              placeholder="記事詳細を入力"
+            />
+          </form>
+        </BlogFormContainer>
+      </BlogAddContainer>
+    </>
   );
 };
 
@@ -80,7 +86,6 @@ const TitleInput = styled.input`
   margin: 8px 0;
   border-radius: 4px;
   background-color: #f2f2f2;
-  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
 `;
 
 const DescriptionInput = styled.textarea`
@@ -90,7 +95,6 @@ const DescriptionInput = styled.textarea`
   margin: 8px 0;
   border-radius: 4px;
   background-color: #f2f2f2;
-  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
 `;
 
 const BlogSubmitButton = styled.button`
@@ -110,4 +114,4 @@ const BlogSubmitButton = styled.button`
   }
 `;
 
-export default PostBlog;
+export default AddBlogpage;
