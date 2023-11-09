@@ -12,27 +12,25 @@ type PostContentprops = {
 
 const BlogContent: React.FC<PostContentprops> = ({ post }) => {
   return (
-    <BlogContentContainer key={post.id}>
-      <Link href={"#"}>
+    <BlogContentContainer>
+      <Link
+        href="/pages/blog/detail/[id]"
+        as={`/pages/blog/detail/${post.id}`}
+        key={post.id}
+      >
         <BlogContenHeader>
           <AccountBlock>
             <IconBlock>
               <Image
                 src="/favicon.ico"
                 alt="icon"
-                width={40} // 画像の幅を指定
+                width={40} //像の幅を指定
                 height={40} // 画像の高さを指定
               />
             </IconBlock>
             <AccountNameBlock>shinshi-onigoori</AccountNameBlock>
           </AccountBlock>
           <DateBlock>{new Date(post.date).toDateString()}</DateBlock>
-          {/* <EditLink
-            href={`/blog/edit/${post.id}`}
-            className="px-4 py-1 text-center text-xl bg-slate-900 rounded-md font-semibold text-slate-200"
-          >
-            編集
-          </EditLink> */}
         </BlogContenHeader>
         <BlogContentTitle>
           <PostTitle>{post.title}</PostTitle>
@@ -46,6 +44,7 @@ const BlogContent: React.FC<PostContentprops> = ({ post }) => {
 
 const BlogContentContainer = styled.div`
   width: 75%; /* Equivalent to w-3/4 in Tailwind */
+  height: 120px;
   padding: 16px;
   margin: 0 6px 10px;
   border-radius: 4px;
@@ -82,23 +81,13 @@ const AccountNameBlock = styled.div`
 `;
 
 const BlogContentTitle = styled.div`
-    padding-top: 20px;
+  padding-top: 20px;
 `;
 const BlogContentFooter = styled.div``;
 
 const PostTitle = styled.h2`
   font-weight: 600;
 `;
-
-// const EditLink = styled.a`
-//   padding: 8px 16px;
-//   text-align: center;
-//   font-size: 1rem;
-//   background-color: #1a237e; /* Change to your desired blue color */
-//   border-radius: 4px;
-//   font-weight: 600;
-//   color: #cfd8dc; /* Change to your desired text color */
-// `;
 
 const DateBlock = styled.blockquote`
   font-size: 0.5rem;
