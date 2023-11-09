@@ -2,7 +2,6 @@
 
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import PostButton from "./postButton";
 import Link from "next/link";
 
 type MainHeaderProps = {
@@ -10,13 +9,21 @@ type MainHeaderProps = {
 };
 
 const MainHeader: React.FC<MainHeaderProps> = ({ children }) => {
+  console.log("MainHeader");
+
+  // const sheet = new ServerStyleSheet();
+  // const styleTags = sheet.getStyleElement();
+
   return (
+    <>
+    {/* <head>{styleTags}</head> */}
     <HeaderContainer>
       <HeaderTitle>
         <Link href={"/"}>Favio</Link>
       </HeaderTitle>
       {children}
     </HeaderContainer>
+    </>
   );
 };
 
