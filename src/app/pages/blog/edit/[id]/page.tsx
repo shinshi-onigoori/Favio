@@ -3,7 +3,10 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Toast, Toaster, toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import styled from "styled-components";
+import MainHeader from "@/app/component/mainHeader";
+import SepalateBorder from "@/app/component/sepalateBorder";
 
 const editBlog = async (
   title: string | undefined,
@@ -41,7 +44,7 @@ const deleteBlog = async (id: number) => {
   return res.json();
 };
 
-const EditPost = ({ params }: { params: { id: number } }) => {
+const EditPostPage = ({ params }: { params: { id: number } }) => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
@@ -62,10 +65,10 @@ const EditPost = ({ params }: { params: { id: number } }) => {
   };
 
   const handleDelete = async () => {
-    toast.loading("削除中です...", { id:"1" });
+    toast.loading("削除中です...", { id: "1" });
     await deleteBlog(params.id);
 
-    router.push("/")
+    router.push("/");
     router.refresh();
   };
 
@@ -81,42 +84,121 @@ const EditPost = ({ params }: { params: { id: number } }) => {
       .catch((err) => {
         toast.error("エラーが発生しました", { id: "1" });
       });
-  }, []);
+  }, [params.id]);
 
   return (
-    <>
+    <BlogEditContainer>
       <Toaster />
-      <div className="w-full m-auto flex my-4">
-        <div className="flex flex-col justify-center items-center m-auto">
-          <p className="text-2xl text-slate-200 font-bold p-3">
-            ブログの編集 🚀
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input
-              ref={titleRef}
-              placeholder="タイトルを入力"
-              type="text"
-              className="rounded-md px-4 w-full py-2 my-2 shadow-xl"
-            />
-            <textarea
-              ref={descriptionRef}
-              placeholder="記事詳細を入力"
-              className="rounded-md px-4 py-2 w-full my-2 shadow-xl"
-            ></textarea>
-            <button className="font-semibold px-4 py-2 shadow-xl bg-slate-200 rounded-lg m-auto hover:bg-slate-100">
-              更新
-            </button>
-            <button
-              onClick={handleDelete}
-              className="ml-2 font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg m-auto hover:bg-slate-100"
-            >
-              削除
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
+      <MainHeader>
+        <BlogEditSubmitButton type="submit" onClick={handleSubmit}>
+          編集を保存
+        </BlogEditSubmitButton>
+      </MainHeader>
+      <BlogBlogEditFormContainer>
+        <form>
+          <TitleEditInput ref={titleRef} placeholder="タイトルを入力" type="text" />
+          <DescriptionEditInput ref={descriptionRef} placeholder="記事詳細を入力" />
+        </form>
+      </BlogBlogEditFormContainer>
+      <SepalateBorder />
+      <OtherOption>
+        <DengerZone>
+          <DengerActionName>このBlogを削除しますか？</DengerActionName>
+          <BlogDeleatButton onClick={handleDelete}>削除</BlogDeleatButton>
+        </DengerZone>
+      </OtherOption>
+    </BlogEditContainer>
   );
 };
 
-export default EditPost;
+const BlogEditContainer = styled.div`
+  width: 100%;
+  height: fit-content;
+`;
+
+const BlogBlogEditFormContainer = styled.div`
+  width: 100%;
+  height: fit-content;
+  padding: 10px;
+`;
+
+const TitleEditInput = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
+`;
+
+const DescriptionEditInput = styled.textarea`
+  width: 100%;
+  height: 500px;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
+`;
+
+const BlogEditSubmitButton = styled.button`
+  box-sizing: border-box;
+  font-weight: 600;
+  padding: 8px 16px;
+  color: #fff;
+  border: 2px solid #df00a3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: #df00a3;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #fbebfc;
+    color: #df00a3;
+  }
+`;
+
+const OtherOption = styled.div`
+  width: 100%;
+  height: fit-content;
+  padding: 20px 10px 50px 10px;
+  border-radius: 10px;
+  background-color: #fff;
+`;
+
+const DengerZone = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 20px 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #e90000;
+`;
+
+const DengerActionName = styled.div`
+  width: 100%;
+  padding: 10px;
+  font-weight: 500;
+`;
+
+const BlogDeleatButton = styled.div`
+  box-sizing: border-box;
+  width: 150px;
+  font-weight: 600;
+  padding: 8px 16px;
+  color: #fff;
+  text-align: center;
+  border: 2px solid #e90000;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: #e90000;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #e90000;
+  }
+`;
+
+export default EditPostPage;
