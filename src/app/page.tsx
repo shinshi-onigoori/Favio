@@ -55,6 +55,7 @@ const ContentBlock = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
 `;
 
