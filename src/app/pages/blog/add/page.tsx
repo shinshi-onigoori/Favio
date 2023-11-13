@@ -23,7 +23,7 @@ const postBlog = async (
   return res.json();
 };
 
-const AddBlogpage = () => {
+const AddBlogPage = () => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
@@ -114,4 +114,4 @@ const BlogSubmitButton = styled.button`
   }
 `;
 
-export default AddBlogpage;
+export default AddBlogPage;
