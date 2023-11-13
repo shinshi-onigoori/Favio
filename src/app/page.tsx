@@ -10,7 +10,7 @@ import PostButton from "./component/postButton";
 import SignInButton from "./component/signInButton";
 
 
-const API_HOST = process.env["API_HOST"];
+const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
 const fetchAllBlogs = async () => {
   const res = await fetch(`${API_HOST}/api/blog`, {

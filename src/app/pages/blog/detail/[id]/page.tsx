@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import toast from "react-hot-toast";
 
-const API_HOST = process.env["API_HOST"];
+const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
 const getBlogById = async (id: number) => {
   const res = await fetch(`${API_HOST}/api/blog/${id}`, {});

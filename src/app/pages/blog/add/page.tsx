@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 import styled from "styled-components";
 import MainHeader from "@/app/component/mainHeader";
 
-const API_HOST = process.env["API_HOST"];
+const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
 const postBlog = async (
   title: string | undefined,
