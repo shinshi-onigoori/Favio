@@ -9,7 +9,7 @@ import styled from "styled-components";
 import toast from "react-hot-toast";
 
 const getBlogById = async (id: number) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${id}`, {});
+  const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`, {});
 
   const data = await res.json();
   console.log(data);

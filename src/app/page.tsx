@@ -10,7 +10,7 @@ import PostButton from "./component/postButton";
 import SignInButton from "./component/signInButton";
 
 const fetchAllBlogs = async () => {
-  const res = await fetch(`http://localhost:3000/api/blog`, {
+  const res = await fetch(`http://127.0.0.1:3000/api/blog`, {
     cache: "no-store", //SSR:リクエストごとにサーバーに対してAPIを叩いてもらう。更新頻度が高いため。 SSGの場合はforce-cache
   });
 
