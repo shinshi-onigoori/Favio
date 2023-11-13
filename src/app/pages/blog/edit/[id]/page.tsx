@@ -7,14 +7,15 @@ import { Toaster, toast } from "react-hot-toast";
 import styled from "styled-components";
 import MainHeader from "@/app/component/mainHeader";
 import SepalateBorder from "@/app/component/sepalateBorder";
-import { env } from "process";
+
+const API_HOST = process.env["API_HOST"];
 
 const editBlog = async (
   title: string | undefined,
   description: string | undefined,
   id: number
 ) => {
-  const res = await fetch(`${env["API_HOST"]}/api/blog/${id}`, {
+  const res = await fetch(`${API_HOST}/api/blog/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +27,7 @@ const editBlog = async (
 };
 
 const getBlogById = async (id: number) => {
-  const res = await fetch(`${env["API_HOST"]}/api/blog/${id}`, {});
+  const res = await fetch(`${API_HOST}/api/blog/${id}`, {});
 
   const data = await res.json();
   console.log(data);
@@ -35,7 +36,7 @@ const getBlogById = async (id: number) => {
 };
 
 const deleteBlog = async (id: number) => {
-  const res = await fetch(`${env["API_HOST"]}/api/blog/${id}`, {
+  const res = await fetch(`${API_HOST}/api/blog/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

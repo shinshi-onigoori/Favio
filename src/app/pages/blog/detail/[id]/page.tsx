@@ -7,10 +7,11 @@ import { PostType } from "@/types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import toast from "react-hot-toast";
-import { env } from "process";
+
+const API_HOST = process.env["API_HOST"];
 
 const getBlogById = async (id: number) => {
-  const res = await fetch(`${env["API_HOST"]}/api/blog/${id}`, {});
+  const res = await fetch(`${API_HOST}/api/blog/${id}`, {});
 
   const data = await res.json();
   console.log(data);

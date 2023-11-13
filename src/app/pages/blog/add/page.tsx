@@ -7,13 +7,14 @@ import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
 import styled from "styled-components";
 import MainHeader from "@/app/component/mainHeader";
-import { env } from "process";
+
+const API_HOST = process.env["API_HOST"];
 
 const postBlog = async (
   title: string | undefined,
   description: string | undefined
 ) => {
-  const res = await fetch(`${env["API_HOST"]}/api/blog`, {
+  const res = await fetch(`${API_HOST}/api/blog`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
