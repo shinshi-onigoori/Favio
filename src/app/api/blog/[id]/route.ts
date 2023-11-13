@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { main } from "../route";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../../../prisma/generated/client";
+
 
 //インスタンス化
 const prisma = new PrismaClient();
