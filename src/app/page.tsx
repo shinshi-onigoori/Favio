@@ -7,6 +7,7 @@ import styled from "styled-components";
 import MainHeader from "./component/mainHeader";
 import BlogContent from "./component/portfolio/BlogContent";
 import PostButton from "./component/postButton";
+import SignInButton from "./component/signInButton";
 
 const fetchAllBlogs = async () => {
   const res = await fetch(`http://localhost:3000/api/blog`, {
@@ -18,6 +19,7 @@ const fetchAllBlogs = async () => {
 };
 
 const Home: React.FC = () => {
+  const [isLoggedIn,setIsLoggedIn] =useState(false);
   const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const Home: React.FC = () => {
   return (
     <React.Fragment>
       <MainHeader>
-        <PostButton />
+        {!isLoggedIn ? <SignInButton/>:<PostButton />}
       </MainHeader>
       <MainContainer>
         <ContentBlock>
