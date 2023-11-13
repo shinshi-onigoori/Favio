@@ -1,5 +1,4 @@
 import { PrismaClient } from "../../../../prisma/generated/client";
-import { NextPage } from "next";
 import { NextResponse } from "next/server";
 
 //インスタンス化
