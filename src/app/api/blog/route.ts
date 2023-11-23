@@ -1,8 +1,5 @@
-import { PrismaClient } from "../../../../prisma/generated/client";
+import prisma from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
-
-//インスタンス化
-const prisma = new PrismaClient();
 
 //データベース接続用関数
 export async function main() {

@@ -20,10 +20,14 @@
     "@types/react-dom": "18.2.7",
     "@types/styled-components": "^5.1.30",
     "autoprefixer": "10.4.15",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "next": "13.4.19",
+    "next-auth": "^4.24.5",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -34,6 +38,8 @@
   },
   "devDependencies": {
     "@swc/plugin-styled-components": "^1.5.97",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
     "babel-plugin-styled-components": "^2.1.4",
     "prisma": "^5.2.0"
   }

@@ -43,8 +43,9 @@ const BlogContent: React.FC<PostContentprops> = ({ post }) => {
 };
 
 const BlogContentContainer = styled.div`
-  width: 75%; /* Equivalent to w-3/4 in Tailwind */
-  height: 120px;
+box-sizing: border-box;
+  width: 75%;
+  height: fit-content;
   padding: 16px;
   margin: 0 6px 10px;
   border-radius: 4px;
@@ -66,8 +67,8 @@ const AccountBlock = styled.div`
 `;
 
 const IconBlock = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 `;
 
 // const IconImage = styled.img`

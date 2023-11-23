@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { main } from "../route";
-import { PrismaClient } from "../../../../../prisma/generated/client";
-
-//インスタンス化
-const prisma = new PrismaClient();
+import prisma from "@/app/lib/prisma";
 
 //BLOGの詳細用API
 export const GET = async (req: Request, res: NextResponse) => {

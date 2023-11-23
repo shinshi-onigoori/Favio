@@ -1,8 +1,8 @@
 "use client";
 
-import MainHeader from "@/app/component/mainHeader";
-import BlogContentDetail from "@/app/component/portfolio/detail/BlogContentDetail";
-import PostButton from "@/app/component/postButton";
+import MainHeader from "@/app/components/mainHeader";
+import BlogContentDetail from "@/app/components/portfolio/detail/BlogContentDetail";
+import PostButton from "@/app/components/postButton";
 import { PostType } from "@/types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -37,9 +37,9 @@ const BlogContentDetailPage = ({ params }: { params: { id: number } }) => {
 
   return (
     <BlogContentDetailContainer>
-      <MainHeader>
+      {/* <MainHeader>
         <PostButton></PostButton>
-      </MainHeader>
+      </MainHeader> */}
       <ContentDetailBlock>
         {post && <BlogContentDetail post={post} />}
       </ContentDetailBlock>

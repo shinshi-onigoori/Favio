@@ -17,3 +17,24 @@ model Post {
   description String
   date        DateTime @default(now())
 }
+
+model User{
+  id       String      @id @default(cuid())
+  email    String   @unique
+  passwordHash String
+  username String @unique @default(cuid())
+  created DateTime @default(now())
+  update DateTime @updatedAt
+  blogs    Blog[]
+}
+
+model Blog {
+  id String @id @default(uuid())
+  title       String
+  description String
+  date        DateTime @default(now())
+  update DateTime @updatedAt
+  userId String
+  user User @relation(fields: [userId], references: [id])
+}
+

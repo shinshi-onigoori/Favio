@@ -4,3 +4,12 @@ export type PostType = {
     description:string;
     date: Date;
 }
+
+export type UserType = {
+    id: string;
+    email: string;
+    passeordHash: string;
+    username: string;
+    created: Date;
+    update: Date; 
+}

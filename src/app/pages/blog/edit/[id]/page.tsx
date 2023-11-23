@@ -5,8 +5,8 @@ import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
 import styled from "styled-components";
-import MainHeader from "@/app/component/mainHeader";
-import SepalateBorder from "@/app/component/sepalateBorder";
+import MainHeader from "@/app/components/mainHeader";
+import SepalateBorder from "@/app/components/sepalateBorder";
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
@@ -91,11 +91,9 @@ const EditPostPage = ({ params }: { params: { id: number } }) => {
   return (
     <BlogEditContainer>
       <Toaster />
-      <MainHeader>
         <BlogEditSubmitButton type="submit" onClick={handleSubmit}>
           編集を保存
         </BlogEditSubmitButton>
-      </MainHeader>
       <BlogBlogEditFormContainer>
         <form>
           <TitleEditInput ref={titleRef} placeholder="タイトルを入力" type="text" />

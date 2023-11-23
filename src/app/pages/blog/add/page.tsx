@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
 import styled from "styled-components";
-import MainHeader from "@/app/component/mainHeader";
+import MainHeader from "@/app/components/mainHeader";
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
@@ -48,11 +48,11 @@ const AddBlogPage = () => {
     <>
       <BlogAddContainer>
         <Toaster />
-        <MainHeader>
+        {/* <MainHeader> */}
           <BlogSubmitButton type="submit" onClick={handleClick}>
             投稿
           </BlogSubmitButton>
-        </MainHeader>
+        {/* </MainHeader> */}
         <BlogFormContainer>
           <form>
             <TitleInput

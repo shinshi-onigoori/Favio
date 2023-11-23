@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { PostType } from "@/types";
 import Link from "next/link";
 import styled from "styled-components";
-import MainHeader from "./component/mainHeader";
-import BlogContent from "./component/portfolio/BlogContent";
-import PostButton from "./component/postButton";
-import SignInButton from "./component/signInButton";
+import MainHeader from "./components/mainHeader";
+import BlogContent from "./components/portfolio/BlogContent";
+import PostButton from "./components/postButton";
+import GoToSignInButton from "./components/auth/goToSignInButton";
 
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
@@ -36,9 +36,9 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      <MainHeader>
-        {!isLoggedIn ? <SignInButton/>:<PostButton />}
-      </MainHeader>
+      {/* <MainHeader>
+        {!isLoggedIn ? <GoToSignInButton/>:<PostButton />}
+      </MainHeader> */}
       <MainContainer>
         <ContentBlock>
           {posts.map((post: PostType) => (

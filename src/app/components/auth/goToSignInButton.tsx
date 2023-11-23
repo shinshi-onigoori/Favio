@@ -3,15 +3,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const SignInButton = () => {
+const GoToSignInButton = () => {
   return (
-    <SignInButtonContainer>
-      <Button href="/pages/signin">ログイン</Button>
-    </SignInButtonContainer>
+    <GoToSignInButtonContainer>
+      <Button href="/pages/auth/signup">ログイン</Button>
+    </GoToSignInButtonContainer>
   );
 };
 
-const SignInButtonContainer = styled.div`
+const GoToSignInButtonContainer = styled.div`
   display: flex;
   width: 150px;
   position: relative; // 相対位置
@@ -34,4 +34,4 @@ const Button = styled.a`
   cursor: pointer;
 `;
 
-export default SignInButton;
+export default GoToSignInButton;
