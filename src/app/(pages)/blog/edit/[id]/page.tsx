@@ -7,6 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 import styled from "styled-components";
 import MainHeader from "@/app/components/mainHeader";
 import SepalateBorder from "@/app/components/sepalateBorder";
+import EditHeader from "@/app/components/editHeader";
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
@@ -91,13 +92,22 @@ const EditPostPage = ({ params }: { params: { id: number } }) => {
   return (
     <BlogEditContainer>
       <Toaster />
+      <EditHeader>
         <BlogEditSubmitButton type="submit" onClick={handleSubmit}>
           編集を保存
         </BlogEditSubmitButton>
+      </EditHeader>
       <BlogBlogEditFormContainer>
         <form>
-          <TitleEditInput ref={titleRef} placeholder="タイトルを入力" type="text" />
-          <DescriptionEditInput ref={descriptionRef} placeholder="記事詳細を入力" />
+          <TitleEditInput
+            ref={titleRef}
+            placeholder="タイトルを入力"
+            type="text"
+          />
+          <DescriptionEditInput
+            ref={descriptionRef}
+            placeholder="記事詳細を入力"
+          />
         </form>
       </BlogBlogEditFormContainer>
       <SepalateBorder />

@@ -37,8 +37,8 @@ const SignUpForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></PasswordInput>
         <SignUpButton onClick={handleSubmit}>Sign Up</SignUpButton>
+        <p>{message}</p>
       </FormBlock>
-      <p>{message}</p>
     </SignUpFormContainer>
   );
 };
@@ -52,7 +52,6 @@ const SignUpFormContainer = styled.div`
   padding: 0.5rem;
   border: 3px solid #f3f3f3;
   border-radius: 1rem;
-  
 `;
 
 const MVBlock = styled.div`

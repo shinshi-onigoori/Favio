@@ -2,13 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { PostType } from "@/types";
-import Link from "next/link";
 import styled from "styled-components";
-import MainHeader from "./components/mainHeader";
 import BlogContent from "./components/portfolio/BlogContent";
-import PostButton from "./components/postButton";
-import GoToSignInButton from "./components/auth/goToSignInButton";
-
+import { NextPage } from "next";
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
@@ -21,8 +17,7 @@ const fetchAllBlogs = async () => {
   return data.posts;
 };
 
-const Home: React.FC = () => {
-  const [isLoggedIn,setIsLoggedIn] =useState(false);
+const Home:NextPage = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
@@ -36,9 +31,6 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      {/* <MainHeader>
-        {!isLoggedIn ? <GoToSignInButton/>:<PostButton />}
-      </MainHeader> */}
       <MainContainer>
         <ContentBlock>
           {posts.map((post: PostType) => (

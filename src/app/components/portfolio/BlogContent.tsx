@@ -10,12 +10,12 @@ type PostContentprops = {
   post: PostType;
 };
 
-const BlogContent: React.FC<PostContentprops> = ({ post }) => {
+const BlogContent = ({ post }: PostContentprops) => {
   return (
     <BlogContentContainer>
       <Link
-        href="/pages/blog/detail/[id]"
-        as={`/pages/blog/detail/${post.id}`}
+        href="/blog/detail/[id]"
+        as={`/blog/detail/${post.id}`}
         key={post.id}
       >
         <BlogContenHeader>
@@ -43,7 +43,7 @@ const BlogContent: React.FC<PostContentprops> = ({ post }) => {
 };
 
 const BlogContentContainer = styled.div`
-box-sizing: border-box;
+  box-sizing: border-box;
   width: 75%;
   height: fit-content;
   padding: 16px;

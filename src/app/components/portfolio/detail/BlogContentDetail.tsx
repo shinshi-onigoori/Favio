@@ -25,7 +25,7 @@ const BlogContentDetail: React.FC<PostContentprops> = ({ post }) => {
           <AccountNameBlock>shinshi-onigoori</AccountNameBlock>
         </AccountBlock>
         <DateBlock>{new Date(post.date).toDateString()}</DateBlock>
-        <EditLink href={`/pages/blog/edit/${post.id}`}>
+        <EditLink href={`/blog/edit/${post.id}`}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </EditLink>
       </BlogContenHeader>

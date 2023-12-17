@@ -15,10 +15,10 @@ const PostButton = () => {
     <PostButtonContainer>
       <ToggleButton onClick={toggleMenu}>投稿する</ToggleButton>
       <Menu isOpen={isOpen}>
-        <PostBlogButton href="/pages/blog/add">Blog</PostBlogButton>
-        <PostBlogButton href="/pages/tweet/add">Tweet</PostBlogButton>
-        <PostBlogButton href="/pages/Album/add">Album</PostBlogButton>
-        <PostBlogButton href="/pages/Album/add">Movie</PostBlogButton>
+        <PostBlogButton href="/blog/add">Blog</PostBlogButton>
+        <PostBlogButton href="/tweet/add">Tweet</PostBlogButton>
+        <PostBlogButton href="/Album/add">Album</PostBlogButton>
+        <PostBlogButton href="/Album/add">Movie</PostBlogButton>
       </Menu>
     </PostButtonContainer>
   );

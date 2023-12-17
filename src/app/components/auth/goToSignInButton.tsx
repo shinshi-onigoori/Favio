@@ -6,7 +6,7 @@ import styled from "styled-components";
 const GoToSignInButton = () => {
   return (
     <GoToSignInButtonContainer>
-      <Button href="/pages/auth/signup">ログイン</Button>
+      <Button href="/signin">ログイン</Button>
     </GoToSignInButtonContainer>
   );
 };
@@ -14,11 +14,11 @@ const GoToSignInButton = () => {
 const GoToSignInButtonContainer = styled.div`
   display: flex;
   width: 150px;
-  position: relative; // 相対位置
+  position: relative; 
   border-radius: 5px;
-  display: inline-block; // インラインブロック要素
+  display: inline-block; 
   background-color: #df00a3;
-  cursor: pointer; // カーソルをポインターに変更
+  cursor: pointer; 
 `;
 
 const Button = styled.a`

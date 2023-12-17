@@ -1,10 +1,11 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { keyframes, styled } from "styled-components";
+import { styled } from "styled-components";
 
 const SignInForm = () => {
   const router = useRouter();
@@ -39,6 +40,7 @@ const SignInForm = () => {
     if (status === "authenticated") {
       router.refresh();
       router.push("/");
+      router.refresh();
     }
   }, [router, status]);
 
@@ -62,8 +64,10 @@ const SignInForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></PasswordInput>
         <SignInButton onClick={handleSubmit}>Sign In</SignInButton>
+        <Link href={"/signup"}>Favio に Sign Up!</Link>
+        <p>{message}</p>
       </FormBlock>
-      <p>{message}</p>
+      
     </SignInFormContainer>
   );
 };
