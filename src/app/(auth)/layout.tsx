@@ -1,11 +1,11 @@
 import RootLayout from '@/app/layout';
 import React from 'react'
 
-interface ProtectedLayoutProps {
+interface authLayoutProps {
     children: React.ReactNode | React.ReactNode[];
 }
 
-const AuthLayout = ({children}:ProtectedLayoutProps) => {
+const AuthLayout = ({children}:authLayoutProps) => {
   return (
     <>
         {children}
