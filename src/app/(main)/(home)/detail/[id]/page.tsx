@@ -7,6 +7,8 @@ import { PostType } from "@/types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import toast from "react-hot-toast";
+import { Session, getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const API_HOST = process.env["NEXT_PUBLIC_API_HOST"];
 
@@ -22,7 +24,9 @@ const getBlogById = async (id: number) => {
 const BlogContentDetailPage = ({ params }: { params: { id: number } }) => {
   const [post, setPost] = useState<PostType | null>(null);
 
+
   useEffect(() => {
+
     const fetchData = async () => {
       try {
         const data = await getBlogById(params.id);
@@ -31,7 +35,6 @@ const BlogContentDetailPage = ({ params }: { params: { id: number } }) => {
         toast.error("エラーが発生しました", { id: "1" });
       }
     };
-
     fetchData();
   }, [params.id]);
 

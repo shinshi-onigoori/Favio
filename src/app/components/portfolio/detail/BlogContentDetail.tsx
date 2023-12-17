@@ -4,19 +4,41 @@ import Image from "next/image";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { getServerSession } from "next-auth";
+import { Session, getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Link from "next/link";
+import toast from "react-hot-toast";
 
 type PostContentprops = {
   post: PostType;
 };
 
-const BlogContentDetail: React.FC<PostContentprops> = ({ post }) => {
+const getSession = async () => {
+  const session = await getServerSession(authOptions);
+  return session;
+};
 
-// const session = await getServerSession(authOptions);
+const BlogContentDetail = ({ post }: PostContentprops) => {
+  const [session, setSession] = useState<Session | null>();
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const session = await getSession();
+        setSession(session);
+      } catch (error) {
+        toast.error("エラーが発生しました", { id: "1" });
+      }
+    };
+
+    fetchSession();
+  }, []);
 
   return (
-    <div key={post.id} className="w-[90%]  h-fit p-[20px] bg-white rounded-[10px]">
+    <div
+      key={post.id}
+      className="w-[90%]  h-fit p-[20px] bg-white rounded-[10px]"
+    >
       <div className="w-full flex justify-between ">
         <div className="w-7/10 flex items-center">
           <div className="w-[40px] h-[40px]">
@@ -27,57 +49,33 @@ const BlogContentDetail: React.FC<PostContentprops> = ({ post }) => {
               height={40} // 画像の高さを指定
             />
           </div>
-          <p className=" inline-block text-[1rem] pl-[1rem] ">shinshi-onigoori</p>
+          <p className=" inline-block text-[1rem] pl-[1rem] ">
+            shinshi-onigoori
+          </p>
         </div>
-        <p className=" flex-inline-block text-[1rem] font-[600] items-center text-[#506068]">{new Date(post.date).toDateString()}</p>
-        <EditLink href={`/blog/edit/${post.id}`}>
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </EditLink>
+        <p className=" inline-block text-[1rem] font-[600] items-center text-[#506068]">
+          {new Date(post.date).toDateString()}
+        </p>
+        {session && session.user?.email ? (
+          <>
+            <Link
+              href={`/blog/edit/${post.id}`}
+              className="w-[30px] h-[30px] flex justify-center items-center text-[1.2rem] bg-white rounded-[100%] font-[600] font-[#3f2739] hover:bg-[#dbdbdb]"
+            >
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
-      <BlogContentTitle>
-        <PostTitle>{post.title}</PostTitle>
-      </BlogContentTitle>
-      <Description>{post.description}</Description>
-      <BlogContentFooter></BlogContentFooter>
+      <div className="text-[2rem] py-[20px] font-[600]">
+        <h2>{post.title}</h2>
+      </div>
+      <p>{post.description}</p>
+      <div></div>
     </div>
   );
 };
-
-const BlogContentTitle = styled.div`
-  font-size: 2rem;
-  padding: 20px 0px;
-`;
-
-const PostTitle = styled.h2`
-  font-weight: 600;
-`;
-
-const DateBlock = styled.blockquote`
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  color: #37474f; /* Change to your desired text color */
-`;
-
-const EditLink = styled.a`
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  background-color: #fff;
-  border-radius: 100%;
-  font-weight: 600;
-  color: #3f2739;
-  &:hover {
-    background-color: #dbdbdb;
-  }
-`;
-
-const Description = styled.div``;
-
-const BlogContentFooter = styled.div``;
 
 export default BlogContentDetail;

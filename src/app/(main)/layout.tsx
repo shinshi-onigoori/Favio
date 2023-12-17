@@ -15,20 +15,6 @@ const MainLayout = async ({ children }: mainLayoutProps) => {
 
   return (
     <>
-      {/* <MainHeader>
-        <Link href={"/protected/dashboard"}>Dashboard</Link>
-        {session && session.user?.email ? (
-          <>
-            <Link href={"/signout"}>SignOut</Link>
-            <p>Sign in as {session.user?.email}</p>
-            <PostButton />
-          </>
-        ) : (
-          <>
-            <GoToSignInButton />
-          </>
-        )}
-      </MainHeader> */}
       {children}
     </>
   );
