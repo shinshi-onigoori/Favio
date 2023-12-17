@@ -91,7 +91,6 @@ const EditPostPage = ({ params }: { params: { id: number } }) => {
 
   return (
     <BlogEditContainer>
-      <Toaster />
       <EditHeader>
         <BlogEditSubmitButton type="submit" onClick={handleSubmit}>
           編集を保存

@@ -1,21 +1,21 @@
 import React from "react";
-import MainHeader from "../components/mainHeader";
+import MainHeader from "@/app/components/mainHeader";
 import Link from "next/link";
-import PostButton from "../components/postButton";
-import GoToSignInButton from "../components/auth/goToSignInButton";
+import PostButton from "@/app/components/postButton";
+import GoToSignInButton from "@/app/components/auth/goToSignInButton";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-interface mainLayoutProps {
+interface homeLayoutProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const MainLayout = async ({ children }: mainLayoutProps) => {
-  // const session = await getServerSession(authOptions);
+const HomeLayout = async ({ children }: homeLayoutProps) => {
+  const session = await getServerSession(authOptions);
 
   return (
     <>
-      {/* <MainHeader>
+      <MainHeader>
         <Link href={"/protected/dashboard"}>Dashboard</Link>
         {session && session.user?.email ? (
           <>
@@ -28,10 +28,10 @@ const MainLayout = async ({ children }: mainLayoutProps) => {
             <GoToSignInButton />
           </>
         )}
-      </MainHeader> */}
+      </MainHeader>
       {children}
     </>
   );
 };
 
-export default MainLayout;
+export default HomeLayout;

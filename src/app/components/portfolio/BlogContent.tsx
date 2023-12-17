@@ -14,8 +14,8 @@ const BlogContent = ({ post }: PostContentprops) => {
   return (
     <BlogContentContainer>
       <Link
-        href="/blog/detail/[id]"
-        as={`/blog/detail/${post.id}`}
+        href="/detail/[id]"
+        as={`detail/${post.id}`}
         key={post.id}
       >
         <BlogContenHeader>

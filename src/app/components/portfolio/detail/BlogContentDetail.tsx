@@ -4,69 +4,44 @@ import Image from "next/image";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 type PostContentprops = {
   post: PostType;
 };
 
 const BlogContentDetail: React.FC<PostContentprops> = ({ post }) => {
+
+// const session = await getServerSession(authOptions);
+
   return (
-    <BlogContentDetailContainer key={post.id}>
-      <BlogContenHeader>
-        <AccountBlock>
-          <IconBlock>
+    <div key={post.id} className="w-[90%]  h-fit p-[20px] bg-white rounded-[10px]">
+      <div className="w-full flex justify-between ">
+        <div className="w-7/10 flex items-center">
+          <div className="w-[40px] h-[40px]">
             <Image
               src="/favicon.ico"
               alt="icon"
               width={40} // 画像の幅を指定
               height={40} // 画像の高さを指定
             />
-          </IconBlock>
-          <AccountNameBlock>shinshi-onigoori</AccountNameBlock>
-        </AccountBlock>
-        <DateBlock>{new Date(post.date).toDateString()}</DateBlock>
+          </div>
+          <p className=" inline-block text-[1rem] pl-[1rem] ">shinshi-onigoori</p>
+        </div>
+        <p className=" flex-inline-block text-[1rem] font-[600] items-center text-[#506068]">{new Date(post.date).toDateString()}</p>
         <EditLink href={`/blog/edit/${post.id}`}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </EditLink>
-      </BlogContenHeader>
+      </div>
       <BlogContentTitle>
         <PostTitle>{post.title}</PostTitle>
       </BlogContentTitle>
       <Description>{post.description}</Description>
       <BlogContentFooter></BlogContentFooter>
-    </BlogContentDetailContainer>
+    </div>
   );
 };
-
-const BlogContentDetailContainer = styled.div`
-  width: 90%;
-  height: fit-content;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
-`;
-
-const BlogContenHeader = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-`;
-
-const AccountBlock = styled.div`
-  width: 70%;
-  display: flex;
-  align-items: center;
-`;
-
-const IconBlock = styled.div`
-  width: 40px;
-  height: 40px;
-`;
-
-const AccountNameBlock = styled.div`
-  font-size: 1rem;
-  padding-left: 10px;
-`;
 
 const BlogContentTitle = styled.div`
   font-size: 2rem;

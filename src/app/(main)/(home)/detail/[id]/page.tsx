@@ -37,9 +37,6 @@ const BlogContentDetailPage = ({ params }: { params: { id: number } }) => {
 
   return (
     <BlogContentDetailContainer>
-      {/* <MainHeader>
-        <PostButton></PostButton>
-      </MainHeader> */}
       <ContentDetailBlock>
         {post && <BlogContentDetail post={post} />}
       </ContentDetailBlock>
