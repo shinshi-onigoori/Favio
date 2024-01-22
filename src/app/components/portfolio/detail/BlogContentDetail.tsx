@@ -7,32 +7,18 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Session, getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Link from "next/link";
-import toast from "react-hot-toast";
+import { NextApiRequest } from "next";
+import { useSession } from "next-auth/react";
 
 type PostContentprops = {
   post: PostType;
 };
 
-const getSession = async () => {
-  const session = await getServerSession(authOptions);
-  return session;
-};
-
-const BlogContentDetail = ({ post }: PostContentprops) => {
-  const [session, setSession] = useState<Session | null>();
-
-  useEffect(() => {
-    const fetchSession = async () => {
-      try {
-        const session = await getSession();
-        setSession(session);
-      } catch (error) {
-        toast.error("エラーが発生しました", { id: "1" });
-      }
-    };
-
-    fetchSession();
-  }, []);
+const BlogContentDetail =  (
+  { post }: PostContentprops,
+  req: NextApiRequest
+) => {
+  const { status } = useSession();
 
   return (
     <div
@@ -56,7 +42,7 @@ const BlogContentDetail = ({ post }: PostContentprops) => {
         <p className=" inline-block text-[1rem] font-[600] items-center text-[#506068]">
           {new Date(post.date).toDateString()}
         </p>
-        {session && session.user?.email ? (
+        {status === "authenticated" ? (
           <>
             <Link
               href={`/blog/edit/${post.id}`}
@@ -68,6 +54,8 @@ const BlogContentDetail = ({ post }: PostContentprops) => {
         ) : (
           <></>
         )}
+        <>
+        </>
       </div>
       <div className="text-[2rem] py-[20px] font-[600]">
         <h2>{post.title}</h2>
